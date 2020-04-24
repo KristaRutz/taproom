@@ -5,7 +5,7 @@ const kegList = [
     itemName: "Superfuzz",
     type: "Blood Orange Pale Ale",
     desc:
-      "Is a mind-bending whirl of the aromas and flavors of blood orange and Northwest hops. Orange peel added to the whirlpool, and Blood Orange in the fermenter",
+      "Is a mind-bending whirl of the aromas and flavors of blood orange and Northwest hops. Orange peel added to the whirlpool, and Blood Orange in the fermenter.",
     origin: "Seattle, WA, USA",
     brewer: "Elysian Brewing",
     price: 189,
