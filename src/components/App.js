@@ -9,18 +9,18 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <header className="App-header">
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>krista's taproom</p>
-        {/* <a
+        <a
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
           Learn React
-        </a> */}
-      </header>
+        </a>
+      </header> */}
       <KegControl />
       <Footer />
     </div>

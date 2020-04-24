@@ -23,7 +23,7 @@ function EditKegForm(props) {
   return (
     <>
       <h3>Edit Keg</h3>
-      <h2>{props.formTitle}</h2>
+      <h2>Keg {props.id}</h2>
       <p className="lead">{props.formDescription}</p>
       <form>
         <div className="form-group">
@@ -90,7 +90,7 @@ function EditKegForm(props) {
 }
 
 EditKegForm.propTypes = {
-  formTitle: PropTypes.string,
+  id: PropTypes.string,
   formDescription: PropTypes.string,
   //potentially put lines 80-87 as a single object and destructure
   keg: PropTypes.object,
@@ -99,7 +99,7 @@ EditKegForm.propTypes = {
 };
 
 EditKegForm.propTypes = {
-  formTitle: PropTypes.string,
+  id: PropTypes.string,
   formDescription: PropTypes.string,
   //potentially put lines 80-87 as a single object and destructure
   itemNameDefault: PropTypes.string,
