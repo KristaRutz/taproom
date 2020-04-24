@@ -20,7 +20,7 @@ function NewKegForm(props) {
     props.handleAddKeg(newKeg);
   };
   return (
-    <>
+    <div className="container">
       <h3>Add new keg</h3>
       <h2>Keg information</h2>
       <p className="lead">Add information about the new keg.</p>
@@ -60,6 +60,8 @@ function NewKegForm(props) {
           <label htmlFor="price">Price</label>
           <input
             type="number"
+            step="0.01"
+            min="0"
             name="price"
             placeholder="0"
             className="form-control"
@@ -69,6 +71,9 @@ function NewKegForm(props) {
           <label htmlFor="abv">Alcohol by Volume (ABV)</label>
           <input
             type="number"
+            step="0.01"
+            min="0"
+            max="100"
             name="abv"
             placeholder="5.0"
             className="form-control"
@@ -78,6 +83,7 @@ function NewKegForm(props) {
           <label htmlFor="ibu">International Bitterness Units (IBU)</label>
           <input
             type="number"
+            min="0"
             name="ibu"
             placeholder="0"
             className="form-control"
@@ -85,7 +91,7 @@ function NewKegForm(props) {
         </div>
         <button type="submit">add keg</button>
       </form>
-    </>
+    </div>
   );
 }
 

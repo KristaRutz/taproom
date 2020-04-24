@@ -21,7 +21,7 @@ function EditKegForm(props) {
   };
 
   return (
-    <>
+    <div className="container">
       <h3>Edit Keg</h3>
       <h2>Keg {props.id}</h2>
       <p className="lead">{props.formDescription}</p>
@@ -60,6 +60,8 @@ function EditKegForm(props) {
         <div className="form-group">
           <input
             type="number"
+            step="0.01"
+            min="0"
             name="price"
             defaultValue={keg.price}
             className="form-control"
@@ -68,6 +70,9 @@ function EditKegForm(props) {
         <div className="form-group">
           <input
             type="number"
+            step="0.01"
+            min="0"
+            max="100"
             name="abv"
             defaultValue={keg.abv}
             className="form-control"
@@ -76,6 +81,7 @@ function EditKegForm(props) {
         <div className="form-group">
           <input
             type="number"
+            min="0"
             name="ibu"
             defaultValue={keg.ibu}
             className="form-control"
@@ -85,7 +91,7 @@ function EditKegForm(props) {
           save changes
         </button>
       </form>
-    </>
+    </div>
   );
 }
 
