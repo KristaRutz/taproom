@@ -39,12 +39,14 @@ class KegControl extends React.Component {
   };
 
   handleEditingKeg = (editedKeg) => {
-    console.log(editedKeg);
-    const editedMasterKegList = this.state.masterKegList.map((keg) => {
-      if (keg.id === editedKeg.id) {
-        keg.itemName = editedKeg.itemName;
-      }
-    });
+    const editedKegIndex = this.state.masterKegList.indexOf(
+      this.state.selectedKeg
+    );
+    const editedMasterKegList = this.state.masterKegList
+      .slice(0, editedKegIndex)
+      .concat(editedKeg)
+      .concat(this.state.masterKegList.slice(editedKegIndex + 1));
+    console.log(editedMasterKegList);
     this.setState({
       masterKegList: editedMasterKegList,
       editing: false,
@@ -102,6 +104,7 @@ class KegControl extends React.Component {
 
   render() {
     let visibleScreen = this.setVisibleScreen();
+    console.log(this.state.masterKegList);
     return (
       <React.Fragment>
         {visibleScreen.component}
