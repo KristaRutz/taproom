@@ -40,12 +40,16 @@ class KegControl extends React.Component {
 
   handleEditingKeg = (editedKeg) => {
     console.log(editedKeg);
-    const editedMasterKegList = this.state.masterKegList.replace((keg) => {
+    const editedMasterKegList = this.state.masterKegList.map((keg) => {
       if (keg.id === editedKeg.id) {
-        console.log(keg);
+        keg.itemName = editedKeg.itemName;
       }
     });
-    this.setState({ masterKegList: editedMasterKegList, editing: false });
+    this.setState({
+      masterKegList: editedMasterKegList,
+      editing: false,
+      selectedKeg: null,
+    });
   };
 
   handleLeaveEditFormClick = () => {
