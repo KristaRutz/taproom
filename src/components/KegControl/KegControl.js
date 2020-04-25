@@ -8,16 +8,29 @@ import kegList from "./KegSeedData";
 class KegControl extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { masterKegList: kegList, selectedKeg: null, editing: false };
+    this.state = {
+      masterKegList: kegList,
+      selectedKeg: null,
+      editing: false,
+      addingNew: false,
+    };
   }
 
-  handleAddKeg = (newKeg) => {
-    console.log("keg control handleAddKeg");
+  /* Adding a new keg */
+  handleAddClick = () => {
+    this.setState({ addingNew: true });
+  };
+  handleAddingKeg = (newKeg) => {
+    console.log("keg control handleAddingKeg");
     console.log(newKeg);
     const newMasterKegList = this.state.masterKegList.concat(newKeg);
-    this.setState({ masterKegList: newMasterKegList });
+    this.setState({ masterKegList: newMasterKegList, addingNew: false });
+  };
+  handleLeaveNewFormClick = () => {
+    this.setState({ addingNew: false });
   };
 
+  /* View individual keg detail */
   handleKegDetailClick = (id) => {
     const selectedKeg = this.state.masterKegList.filter(
       (keg) => keg.id === id
@@ -25,19 +38,15 @@ class KegControl extends React.Component {
     console.log(selectedKeg);
     this.setState({ selectedKeg: selectedKeg });
   };
-
   handleLeaveKegDetailClick = () => {
     this.setState({ selectedKeg: null });
   };
 
+  /* Edit a keg */
   handleEditClick = (id) => {
-    // const selectedKeg = this.state.masterKegList.filter(
-    //   (keg) => keg.id === id
-    // )[0];
     console.log(this.state.selectedKeg.itemName);
     this.setState({ editing: true });
   };
-
   handleEditingKeg = (editedKeg) => {
     const editedKegIndex = this.state.masterKegList.indexOf(
       this.state.selectedKeg
@@ -53,11 +62,11 @@ class KegControl extends React.Component {
       selectedKeg: null,
     });
   };
-
   handleLeaveEditFormClick = () => {
     this.setState({ editing: false });
   };
 
+  /* Delete a keg */
   handleDeleteClick = (id) => {
     const newMasterKegList = this.state.masterKegList.filter(
       (keg) => keg.id !== id
@@ -68,6 +77,7 @@ class KegControl extends React.Component {
     });
   };
 
+  /* Determine which components should be displayed on render */
   setVisibleScreen = () => {
     if (this.state.editing === true) {
       return {
@@ -90,14 +100,22 @@ class KegControl extends React.Component {
           />
         ),
       };
-    } else {
+    } else if (this.state.addingNew === true) {
       return {
         component: (
-          <KegList
-            kegList={this.state.masterKegList}
-            onKegDetailClick={this.handleKegDetailClick}
+          <NewKegForm
+            handleAddingKeg={this.handleAddingKeg}
+            onLeaveNewFormClick={this.handleLeaveNewFormClick}
           />
         ),
+      };
+    } else {
+      return {
+        component: null,
+        // <KegList
+        //   kegList={this.state.masterKegList}
+        //   onKegDetailClick={this.handleKegDetailClick}
+        // />
       };
     }
   };
@@ -115,14 +133,15 @@ class KegControl extends React.Component {
           onLeaveKegDetailClick={this.handleLeaveKegDetailClick}
         /> */}
         <hr />
-        {/* <KegList
+        <button onClick={this.handleAddClick}>Add a keg</button>
+        <KegList
           kegList={this.state.masterKegList}
           onKegDetailClick={this.handleKegDetailClick}
-        /> */}
+        />
         <hr />
-        <h2>Forms </h2>
-        <NewKegForm handleAddKeg={this.handleAddKeg} />
-        <hr />
+        {/* <h2>Forms </h2>
+        <NewKegForm handleAddingKeg={this.handleAddingKeg} />
+        <hr /> */}
         {/* <EditKegForm />
         <hr /> */}
       </React.Fragment>

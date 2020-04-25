@@ -6,16 +6,9 @@ function KegList(props) {
   return (
     <>
       <h2>List of all Kegs</h2>
-      {props.kegList.map((keg) => {
-        //console.log(keg);
-        return (
-          <KegListTile
-            keg={keg}
-            onClick={props.onKegDetailClick}
-            key={keg.id}
-          />
-        );
-      })}
+      {props.kegList.map((keg) => (
+        <KegListTile keg={keg} onClick={props.onKegDetailClick} key={keg.id} />
+      ))}
     </>
   );
 }

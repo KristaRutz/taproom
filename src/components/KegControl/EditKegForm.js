@@ -1,5 +1,4 @@
 import React from "react";
-//import ReusableKegForm from "./ReusableKegForm";
 import PropTypes from "prop-types";
 
 function EditKegForm(props) {
@@ -20,18 +19,6 @@ function EditKegForm(props) {
     };
     props.onFormSubmit(editedKeg);
   };
-
-  // const keg = {
-  //   itemName: "Superfuzz",
-  //   desc:
-  //     "Is a mind-bending whirl of the aromas and flavors of blood orange and Northwest hops. Orange peel added to the whirlpool, and Blood Orange in the fermenter",
-  //   origin: "Seattle, WA, USA",
-  //   brewer: "Elysian Brewing",
-  //   price: 180,
-  //   abv: 6.4,
-  //   ibu: 45,
-  //   id: "sample-id",
-  // };
 
   return (
     <div className="container">
@@ -109,32 +96,6 @@ function EditKegForm(props) {
     </div>
   );
 }
-
-// EditKegForm.propTypes = {
-//   id: PropTypes.string,
-//   formDescription: PropTypes.string,
-//   //potentially put lines 80-87 as a single object and destructure
-//   keg: PropTypes.object,
-//   onSubmitFunction: PropTypes.func,
-//   submitButtonText: PropTypes.string,
-// };
-
-// EditKegForm.propTypes = {
-//   id: PropTypes.string,
-//   formDescription: PropTypes.string,
-//   //potentially put lines 80-87 as a single object and destructure
-//   itemNameDefault: PropTypes.string,
-//   descDefault: PropTypes.string,
-//   originDefault: PropTypes.string,
-//   brewerDefault: PropTypes.string,
-//   priceDefault: PropTypes.number,
-//   abvDefault: PropTypes.number,
-//   ibuDefault: PropTypes.number,
-//   id: PropTypes.string,
-//   keg: PropTypes.object,
-//   onSubmitFunction: PropTypes.func,
-//   submitButtonText: PropTypes.string,
-// };
 
 EditKegForm.propTypes = {
   keg: PropTypes.object,

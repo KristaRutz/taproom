@@ -17,10 +17,11 @@ function NewKegForm(props) {
       lastUpdated: new Date(),
       id: v4(),
     };
-    props.handleAddKeg(newKeg);
+    props.handleAddingKeg(newKeg);
   };
   return (
     <div className="container">
+      <button onClick={props.onLeaveNewFormClick}>x</button>
       <h3>Add new keg</h3>
       <h2>Keg information</h2>
       <p className="lead">Add information about the new keg.</p>
@@ -96,7 +97,8 @@ function NewKegForm(props) {
 }
 
 NewKegForm.propTypes = {
-  handleAddKeg: PropTypes.func,
+  handleAddingKeg: PropTypes.func,
+  onLeaveNewFormClick: PropTypes.func,
 };
 
 export default NewKegForm;
