@@ -21,10 +21,11 @@ function NewKegForm(props) {
   };
   return (
     <div className="container">
-      <button onClick={props.onLeaveNewFormClick}>x</button>
+      <button className="btn btn-secondary" onClick={props.onLeaveNewFormClick}>
+        x
+      </button>
       <h3>Add new keg</h3>
-      <h2>Keg information</h2>
-      <p className="lead">Add information about the new keg.</p>
+      <p className="lead">Add information about the new keg</p>
       <form onSubmit={handleClick}>
         <div className="form-group">
           <input
@@ -90,7 +91,9 @@ function NewKegForm(props) {
             className="form-control"
           />
         </div>
-        <button type="submit">add keg</button>
+        <button className="btn btn-secondary" type="submit">
+          add keg
+        </button>
       </form>
     </div>
   );

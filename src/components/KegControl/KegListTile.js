@@ -1,6 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+const ListStyles = {
+  textAlign: "left",
+};
+
 function KegListTile(props) {
   const { keg } = props;
 
@@ -8,7 +12,7 @@ function KegListTile(props) {
     <>
       <div onClick={() => props.onClick(keg.id)}>
         <h3>{keg.itemName}</h3>
-        <p>{keg.desc}</p>
+        <p style={ListStyles}>{keg.desc}</p>
       </div>
     </>
   );

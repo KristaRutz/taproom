@@ -2,7 +2,7 @@ import React from "react";
 
 const HeaderStyles = {
   marginBlockStart: 0,
-  color: "white",
+  // color: "white",
 };
 
 function Header(props) {

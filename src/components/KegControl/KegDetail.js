@@ -5,7 +5,12 @@ function KegDetail(props) {
   const { keg } = props;
   return (
     <>
-      <button onClick={props.onLeaveKegDetailClick}>x</button>
+      <button
+        className="btn btn-secondary"
+        onClick={props.onLeaveKegDetailClick}
+      >
+        x
+      </button>
       <h1>
         {keg.itemName} <small>{keg.type}</small>
       </h1>
@@ -16,8 +21,20 @@ function KegDetail(props) {
       <p>{keg.abv}% ABV</p>
       <p>{keg.ibu} IBU</p>
       <p>${keg.price} / keg</p>
-      <button onClick={() => props.onEditClick(keg.id)}>update</button>
-      <button onClick={() => props.onDeleteClick(keg.id)}>delete</button>
+      <div className="btn-group">
+        <button
+          className="btn btn-secondary"
+          onClick={() => props.onEditClick(keg.id)}
+        >
+          update
+        </button>
+        <button
+          className="btn btn-secondary"
+          onClick={() => props.onDeleteClick(keg.id)}
+        >
+          delete
+        </button>
+      </div>
     </>
   );
 }

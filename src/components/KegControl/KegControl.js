@@ -133,7 +133,9 @@ class KegControl extends React.Component {
           onLeaveKegDetailClick={this.handleLeaveKegDetailClick}
         /> */}
         <hr />
-        <button onClick={this.handleAddClick}>Add a keg</button>
+        <button className="btn btn-secondary" onClick={this.handleAddClick}>
+          Add a keg
+        </button>
         <KegList
           kegList={this.state.masterKegList}
           onKegDetailClick={this.handleKegDetailClick}

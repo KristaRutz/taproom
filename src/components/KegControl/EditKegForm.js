@@ -22,9 +22,13 @@ function EditKegForm(props) {
 
   return (
     <div className="container">
-      <button onClick={props.onLeaveEditFormClick}>x</button>
-      <h3>Edit Keg</h3>
-      <h2>Keg {props.id}</h2>
+      <button
+        className="btn btn-secondary"
+        onClick={props.onLeaveEditFormClick}
+      >
+        x
+      </button>
+      <h3>Edit Keg #{keg.id}</h3>
       <p className="lead">{props.formDescription}</p>
       <form onSubmit={handleClick}>
         <div className="form-group">
@@ -91,7 +95,9 @@ function EditKegForm(props) {
             className="form-control"
           />
         </div>
-        <button type="submit">save changes</button>
+        <button className="btn btn-secondary" type="submit">
+          save changes
+        </button>
       </form>
     </div>
   );
