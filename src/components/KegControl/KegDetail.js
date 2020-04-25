@@ -9,7 +9,6 @@ const OverlayBackgroundStyles = {
   left: 0,
   width: "100%",
   height: "100%",
-  //background: "white",
   backgroundColor: "rgba(0,0,0,0.3)",
   justifyContent: "center",
   alignItems: "center",
@@ -38,17 +37,17 @@ function KegDetail(props) {
       <div style={OverlayContentStyles}>
         <div style={CloseButton}>
           <button
-            className="btn btn-secondary"
+            className="btn btn-light"
             onClick={props.onLeaveKegDetailClick}
           >
             x
           </button>
         </div>
         <h1>
-          {keg.itemName} <small>{keg.type}</small>
+          {keg.itemName} <small>{keg.type.toUpperCase()}</small>
         </h1>
         <p className="lead">
-          Brewed by {keg.brewer} in {keg.origin}.
+          Brewed by <strong>{keg.brewer}</strong> in {keg.origin}
         </p>
         <p>{keg.desc}</p>
         <p>{keg.abv}% ABV</p>

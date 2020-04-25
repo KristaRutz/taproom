@@ -126,26 +126,19 @@ class KegControl extends React.Component {
     return (
       <React.Fragment>
         {visibleScreen.component}
-        {/* <KegDetail
-          keg={this.state.selectedKeg}
-          onEditClick={this.handleEditClick}
-          onDeleteClick={this.handleDeleteClick}
-          onLeaveKegDetailClick={this.handleLeaveKegDetailClick}
-        /> */}
         <hr />
-        <button className="btn btn-secondary" onClick={this.handleAddClick}>
-          Add a keg
-        </button>
+        <h1 className="display-4">
+          on tap{" "}
+          <span className="btn btn-light" onClick={this.handleAddClick}>
+            +
+          </span>
+        </h1>
+
         <KegList
           kegList={this.state.masterKegList}
           onKegDetailClick={this.handleKegDetailClick}
         />
         <hr />
-        {/* <h2>Forms </h2>
-        <NewKegForm handleAddingKeg={this.handleAddingKeg} />
-        <hr /> */}
-        {/* <EditKegForm />
-        <hr /> */}
       </React.Fragment>
     );
   }
