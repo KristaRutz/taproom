@@ -44,8 +44,21 @@ class KegControl extends React.Component {
 
   /* Edit a keg */
   handleEditClick = (id) => {
-    console.log(this.state.selectedKeg.itemName);
     this.setState({ editing: true });
+  };
+  handlePurchaseClick = (keg) => {
+    keg.pintsRemaining--;
+    const editedKegIndex = this.state.masterKegList.indexOf(
+      this.state.selectedKeg
+    );
+    const editedMasterKegList = this.state.masterKegList
+      .slice(0, editedKegIndex)
+      .concat(keg)
+      .concat(this.state.masterKegList.slice(editedKegIndex + 1));
+    this.setState({
+      masterKegList: editedMasterKegList,
+      editing: false,
+    });
   };
   handleEditingKeg = (editedKeg) => {
     const editedKegIndex = this.state.masterKegList.indexOf(
@@ -55,7 +68,6 @@ class KegControl extends React.Component {
       .slice(0, editedKegIndex)
       .concat(editedKeg)
       .concat(this.state.masterKegList.slice(editedKegIndex + 1));
-    console.log(editedMasterKegList);
     this.setState({
       masterKegList: editedMasterKegList,
       editing: false,
@@ -95,6 +107,7 @@ class KegControl extends React.Component {
           <KegDetail
             keg={this.state.selectedKeg}
             onEditClick={this.handleEditClick}
+            onPurchaseClick={this.handlePurchaseClick}
             onDeleteClick={this.handleDeleteClick}
             onLeaveKegDetailClick={this.handleLeaveKegDetailClick}
           />

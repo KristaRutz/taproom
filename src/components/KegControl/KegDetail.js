@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { findByLabelText } from "@testing-library/react";
 
 const OverlayBackgroundStyles = {
   position: "fixed",
@@ -53,7 +52,15 @@ function KegDetail(props) {
         <p>{keg.abv}% ABV</p>
         <p>{keg.ibu} IBU</p>
         <p>${keg.price} / keg</p>
+        <p>${Math.round(keg.price / 30)} / pint</p>
+        <p>{keg.pintsRemaining} pints remaining</p>
         <div className="btn-group">
+          <button
+            className="btn btn-secondary"
+            onClick={() => props.onPurchaseClick(keg)}
+          >
+            purchase
+          </button>
           <button
             className="btn btn-secondary"
             onClick={() => props.onEditClick(keg.id)}
@@ -77,6 +84,7 @@ KegDetail.propTypes = {
   onLeaveKegDetailClick: PropTypes.func,
   onEditClick: PropTypes.func,
   onDeleteClick: PropTypes.func,
+  onPurchaseClick: PropTypes.func,
 };
 
 export default KegDetail;

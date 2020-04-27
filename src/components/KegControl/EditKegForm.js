@@ -36,10 +36,12 @@ function EditKegForm(props) {
     event.preventDefault();
     const editedKeg = {
       itemName: event.target.itemName.value,
+      type: event.target.type.value,
       desc: event.target.desc.value,
       origin: event.target.origin.value,
       brewer: event.target.brewer.value,
       price: parseFloat(event.target.price.value),
+      pintsRemaining: parseInt(event.target.pintsRemaining.value),
       abv: parseFloat(event.target.abv.value),
       ibu: parseInt(event.target.ibu.value),
       created: keg.created,
@@ -68,6 +70,14 @@ function EditKegForm(props) {
               type="text"
               name="itemName"
               defaultValue={keg.itemName}
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              name="type"
+              defaultValue={keg.type}
               className="form-control"
             />
           </div>
@@ -124,6 +134,18 @@ function EditKegForm(props) {
               min="0"
               name="ibu"
               defaultValue={keg.ibu}
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="pintsRemaining">
+              Approximate number of pints remaining
+            </label>
+            <input
+              type="number"
+              min="0"
+              name="pintsRemaining"
+              defaultValue={keg.pintsRemaining}
               className="form-control"
             />
           </div>
