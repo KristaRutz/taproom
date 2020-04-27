@@ -14,6 +14,11 @@ const ListTileTextStyles = {
 
 function KegListTile(props) {
   const { keg } = props;
+  const conditionalOutOfStockNote = () => {
+    if (keg.pintsRemaining < 1) {
+      return <small className="text-muted"> OUT OF STOCK</small>;
+    }
+  };
 
   return (
     <>
@@ -22,7 +27,10 @@ function KegListTile(props) {
         className="container-fluid"
         onClick={() => props.onClick(keg.id)}
       >
-        <h3>{keg.itemName}</h3>
+        <h3>
+          {keg.itemName}
+          {conditionalOutOfStockNote()}
+        </h3>
         <p style={ListTileTextStyles}>{keg.desc}</p>
       </div>
     </>

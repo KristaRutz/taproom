@@ -12,7 +12,6 @@ const OverlayBackgroundStyles = {
   justifyContent: "center",
   alignItems: "center",
 };
-
 const OverlayContentStyles = {
   width: "60%",
   borderRadius: 10,
@@ -22,7 +21,6 @@ const OverlayContentStyles = {
   paddingLeft: 15,
   paddingRight: 15,
 };
-
 const CloseButton = {
   display: "flex",
   flexDirection: "row-reverse",
@@ -31,6 +29,18 @@ const CloseButton = {
 
 function KegDetail(props) {
   const { keg } = props;
+  const conditionalPurchaseButton = () => {
+    if (keg.pintsRemaining > 0) {
+      return (
+        <button
+          className="btn btn-secondary"
+          onClick={() => props.onPurchaseClick(keg)}
+        >
+          purchase
+        </button>
+      );
+    }
+  };
   return (
     <div style={OverlayBackgroundStyles}>
       <div style={OverlayContentStyles}>
@@ -55,12 +65,7 @@ function KegDetail(props) {
         <p>${Math.round(keg.price / 30)} / pint</p>
         <p>{keg.pintsRemaining} pints remaining</p>
         <div className="btn-group">
-          <button
-            className="btn btn-secondary"
-            onClick={() => props.onPurchaseClick(keg)}
-          >
-            purchase
-          </button>
+          {conditionalPurchaseButton()}
           <button
             className="btn btn-secondary"
             onClick={() => props.onEditClick(keg.id)}
