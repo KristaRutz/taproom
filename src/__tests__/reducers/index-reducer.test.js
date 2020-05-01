@@ -2,6 +2,8 @@ import rootReducer from "../../reducers";
 import { createStore } from "redux";
 import selectedKegReducer from "../../reducers/selected-keg-reducer";
 import masterKegListReducer from "../../reducers/master-keg-list-reducer";
+import addKegFormOnReducer from "../../reducers/add-keg-form-on-reducer";
+import editKegFormOnReducer from "../../reducers/edit-keg-form-on-reducer";
 import * as a from "../../actions";
 
 const store = createStore(rootReducer);
@@ -11,6 +13,8 @@ describe("rootReducer", () => {
     expect(rootReducer({}, { type: null })).toEqual({
       masterKegList: {},
       selectedKeg: null,
+      addKegFormOn: false,
+      editKegFormOn: false,
     });
   });
 
@@ -19,10 +23,19 @@ describe("rootReducer", () => {
       masterKegListReducer(undefined, { type: null })
     );
   });
-
   it("initial state of selectKegReducer matches rootReducer", () => {
     expect(store.getState().selectedKeg).toEqual(
       selectedKegReducer(undefined, { type: null })
+    );
+  });
+  it("initial state of addKegFormOnReducer matches rootReducer", () => {
+    expect(store.getState().addKegFormOn).toEqual(
+      addKegFormOnReducer(undefined, { type: null })
+    );
+  });
+  it("initial state of editKegFormOnReducer matches rootReducer", () => {
+    expect(store.getState().editKegFormOn).toEqual(
+      editKegFormOnReducer(undefined, { type: null })
     );
   });
 
@@ -33,12 +46,25 @@ describe("rootReducer", () => {
       masterKegListReducer(undefined, action)
     );
   });
-
   it("updated state of selectKegReducer matches rootReducer", () => {
     const action = a.selectKeg({ id: "test" });
     store.dispatch(action);
     expect(store.getState().selectedKeg).toEqual(
       selectedKegReducer(undefined, action)
+    );
+  });
+  it("updated state of addKegFormOnReducer matches rootReducer", () => {
+    const action = a.toggleAddKegForm();
+    store.dispatch(action);
+    expect(store.getState().addKegFormOn).toEqual(
+      addKegFormOnReducer(undefined, action)
+    );
+  });
+  it("updated state of editKegFormOnReducer matches rootReducer", () => {
+    const action = a.toggleEditKegForm();
+    store.dispatch(action);
+    expect(store.getState().editKegFormOn).toEqual(
+      editKegFormOnReducer(undefined, action)
     );
   });
 });
