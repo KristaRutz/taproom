@@ -5,6 +5,8 @@ export const addKeg = (keg) => ({
   keg,
 });
 
+export const editKeg = addKeg;
+
 export const deleteKeg = (id) => ({
   type: c.DELETE_KEG,
   id,

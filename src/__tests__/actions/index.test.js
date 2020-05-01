@@ -11,6 +11,14 @@ describe("taproom action types", () => {
     });
   });
 
+  it("editKeg should create ADD_KEG action", () => {
+    const testKeg = { itemName: "Example" };
+    expect(actions.editKeg(testKeg)).toEqual({
+      type: c.ADD_NEW_KEG,
+      keg: testKeg,
+    });
+  });
+
   it("deleteKeg should create a DELETE_KEG action", () => {
     const id = v4();
     expect(actions.deleteKeg(id)).toEqual({ type: c.DELETE_KEG, id: id });
