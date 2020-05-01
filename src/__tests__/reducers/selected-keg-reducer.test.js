@@ -4,16 +4,7 @@ import { v4 } from "uuid";
 
 describe("selectedKegReducer", () => {
   test("should return default state if the action type passed into the reducer is not recognized", () => {
-    expect(
-      selectedKegReducer(
-        {
-          selectedKeg: null,
-        },
-        { type: null }
-      )
-    ).toEqual({
-      selectedKeg: null,
-    });
+    expect(selectedKegReducer(null, { type: null })).toEqual(null);
   });
 
   test("should return {selectedKeg: null} in DESELECT_KEG action", () => {
@@ -21,10 +12,6 @@ describe("selectedKegReducer", () => {
       itemName: test,
       id: v4(),
     };
-    expect(
-      selectedKegReducer({ selectedKeg: testKeg }, c.DESELECT_KEG)
-    ).toEqual({
-      selectedKeg: null,
-    });
+    expect(selectedKegReducer(testKeg, { type: c.DESELECT_KEG })).toEqual(null);
   });
 });
