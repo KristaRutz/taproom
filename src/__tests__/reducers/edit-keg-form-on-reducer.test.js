@@ -14,4 +14,19 @@ describe("editKegFormReducer", () => {
       editKegFormOnReducer(true, { type: c.TOGGLE_EDIT_KEG_FORM })
     ).toEqual(false);
   });
+
+  test("should explicitly set form visibility state", () => {
+    expect(
+      editKegFormOnReducer(false, {
+        type: c.SET_EDIT_KEG_FORM_ON,
+        payload: true,
+      })
+    ).toEqual(true);
+    expect(
+      editKegFormOnReducer(true, {
+        type: c.SET_EDIT_KEG_FORM_ON,
+        payload: true,
+      })
+    ).toEqual(true);
+  });
 });

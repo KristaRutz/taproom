@@ -43,11 +43,23 @@ describe("taproom action types", () => {
       type: c.TOGGLE_ADD_KEG_FORM,
     });
   });
+  it("setAddKegFormOn should create a SET_ADD_KEG_FORM_ON action", () => {
+    expect(actions.setAddKegFormOn(true)).toEqual({
+      type: c.SET_ADD_KEG_FORM_ON,
+      payload: true,
+    });
+  });
 
   /* editKegForm actions */
   it("toggleEditKegForm should create a TOGGLE_EDIT_KEG_FORM action", () => {
     expect(actions.toggleEditKegForm()).toEqual({
       type: c.TOGGLE_EDIT_KEG_FORM,
+    });
+  });
+  it("setEditKegFormOn should create a SET_EDIT_KEG_FORM_ON action", () => {
+    expect(actions.setEditKegFormOn(false)).toEqual({
+      type: c.SET_EDIT_KEG_FORM_ON,
+      payload: false,
     });
   });
 });

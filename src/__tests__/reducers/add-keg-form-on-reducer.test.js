@@ -15,4 +15,19 @@ describe("addKegFormReducer", () => {
       false
     );
   });
+
+  test("should explicitly set form visibility state", () => {
+    expect(
+      addKegFormOnReducer(false, {
+        type: c.SET_ADD_KEG_FORM_ON,
+        payload: true,
+      })
+    ).toEqual(true);
+    expect(
+      addKegFormOnReducer(true, {
+        type: c.SET_ADD_KEG_FORM_ON,
+        payload: true,
+      })
+    ).toEqual(true);
+  });
 });

@@ -85,4 +85,6 @@ export default {
     },
   },
   selectedKeg: null,
+  addKegFormOn: false,
+  editKegFormOn: false,
 };

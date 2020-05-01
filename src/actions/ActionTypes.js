@@ -3,4 +3,6 @@ export const DELETE_KEG = "DELETE_KEG";
 export const SELECT_KEG = "SELECT_KEG";
 export const DESELECT_KEG = "DESELECT_KEG";
 export const TOGGLE_ADD_KEG_FORM = "TOGGLE_ADD_KEG_FORM";
+export const SET_ADD_KEG_FORM_ON = "SET_ADD_KEG_FORM_ON";
 export const TOGGLE_EDIT_KEG_FORM = "TOGGLE_EDIT_KEG_FORM";
+export const SET_EDIT_KEG_FORM_ON = "SET_EDIT_KEG_FORM_ON";

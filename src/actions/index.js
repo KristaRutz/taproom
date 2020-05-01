@@ -24,8 +24,16 @@ export const deselectKeg = () => ({
 export const toggleAddKegForm = () => ({
   type: c.TOGGLE_ADD_KEG_FORM,
 });
+export const setAddKegFormOn = (bool) => ({
+  type: c.SET_ADD_KEG_FORM_ON,
+  payload: bool,
+});
 
 /* editKegForm actions */
 export const toggleEditKegForm = () => ({
   type: c.TOGGLE_EDIT_KEG_FORM,
+});
+export const setEditKegFormOn = (bool) => ({
+  type: c.SET_EDIT_KEG_FORM_ON,
+  payload: bool,
 });
