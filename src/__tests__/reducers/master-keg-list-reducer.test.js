@@ -14,7 +14,7 @@ describe("masterKegListReducer", () => {
         {},
         {
           type: c.ADD_NEW_KEG,
-          payload: {
+          keg: {
             itemName: "Superfuzz",
             price: 189,
             brewer: "Elysian Brewing",
