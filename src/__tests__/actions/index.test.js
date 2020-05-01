@@ -15,4 +15,18 @@ describe("taproom action types", () => {
     const id = v4();
     expect(actions.deleteKeg(id)).toEqual({ type: c.DELETE_KEG, id: id });
   });
+
+  it("selectKeg should create a SELECT_KEG action", () => {
+    const testKeg = { itemName: "Example" };
+    expect(actions.selectKeg(testKeg)).toEqual({
+      type: c.SELECT_KEG,
+      keg: testKeg,
+    });
+  });
+
+  it("deselectKeg should create a DESELECT_KEG action", () => {
+    expect(actions.deselectKeg()).toEqual({
+      type: c.DESELECT_KEG,
+    });
+  });
 });
