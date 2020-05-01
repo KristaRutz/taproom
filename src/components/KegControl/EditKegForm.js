@@ -36,7 +36,7 @@ function EditKegForm(props) {
     event.preventDefault();
     const editedKeg = {
       itemName: event.target.itemName.value,
-      type: event.target.type.value,
+      beerType: event.target.beerType.value,
       desc: event.target.desc.value,
       origin: event.target.origin.value,
       brewer: event.target.brewer.value,
@@ -76,8 +76,8 @@ function EditKegForm(props) {
           <div className="form-group">
             <input
               type="text"
-              name="type"
-              defaultValue={keg.type}
+              name="beerType"
+              defaultValue={keg.beerType}
               className="form-control"
             />
           </div>

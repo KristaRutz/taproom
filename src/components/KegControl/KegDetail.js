@@ -53,7 +53,7 @@ function KegDetail(props) {
           </button>
         </div>
         <h1>
-          {keg.itemName} <small>{keg.type.toUpperCase()}</small>
+          {keg.itemName} <small>{keg.beerType.toUpperCase()}</small>
         </h1>
         <p className="lead">
           Brewed by <strong>{keg.brewer}</strong> in {keg.origin}

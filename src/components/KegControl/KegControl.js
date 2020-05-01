@@ -47,7 +47,7 @@ class KegControl extends React.Component {
     this.setState({ editing: true });
   };
   handlePurchaseClick = (keg) => {
-    keg.pintsRemaining--;
+    keg.pintsRemaining--; // consider using Object.assign()
     const editedKegIndex = this.state.masterKegList.indexOf(
       this.state.selectedKeg
     );
@@ -57,7 +57,6 @@ class KegControl extends React.Component {
       .concat(this.state.masterKegList.slice(editedKegIndex + 1));
     this.setState({
       masterKegList: editedMasterKegList,
-      editing: false,
     });
   };
   handleEditingKeg = (editedKeg) => {

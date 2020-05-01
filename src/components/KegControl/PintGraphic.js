@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { findByLabelText } from "@testing-library/react";
 
 function PintGraphic(props) {
   const pintGraphicContainerStyle = {

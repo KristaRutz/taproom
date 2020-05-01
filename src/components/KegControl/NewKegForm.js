@@ -36,7 +36,7 @@ function NewKegForm(props) {
     event.preventDefault();
     const newKeg = {
       itemName: event.target.itemname.value,
-      type: event.target.type.value,
+      beerType: event.target.beerType.value,
       desc: event.target.desc.value,
       origin: event.target.origin.value,
       brewer: event.target.brewer.value,
@@ -72,7 +72,7 @@ function NewKegForm(props) {
           <div className="form-group">
             <input
               type="text"
-              name="type"
+              name="beerType"
               placeholder="Type (i.e. IPA, Kolsch)"
               className="form-control"
             />
