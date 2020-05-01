@@ -1,15 +1,17 @@
 import React from "react";
+import { connect } from "react-redux";
 import KegDetail from "./KegDetail";
 import KegList from "./KegList";
 import NewKegForm from "./NewKegForm";
 import EditKegForm from "./EditKegForm";
 import kegList from "./KegSeedData";
+import * as a from "../../actions";
 
 class KegControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      masterKegList: kegList,
+      //masterKegList: kegList,
       selectedKeg: null,
       editing: false,
       addingNew: false,
@@ -20,11 +22,12 @@ class KegControl extends React.Component {
   handleAddClick = () => {
     this.setState({ addingNew: true });
   };
+  // **switched to redux state**
   handleAddingKeg = (newKeg) => {
-    console.log("keg control handleAddingKeg");
-    console.log(newKeg);
-    const newMasterKegList = this.state.masterKegList.concat(newKeg);
-    this.setState({ masterKegList: newMasterKegList, addingNew: false });
+    //const newMasterKegList = this.state.masterKegList.concat(newKeg);
+    //this.setState({ masterKegList: newMasterKegList, addingNew: false });
+    this.props.dispatch(a.addKeg(newKeg));
+    this.setState({ addingNew: false });
   };
   handleLeaveNewFormClick = () => {
     this.setState({ addingNew: false });
@@ -59,33 +62,39 @@ class KegControl extends React.Component {
       masterKegList: editedMasterKegList,
     });
   };
+  // **switched to redux state**
   handleEditingKeg = (editedKeg) => {
-    const editedKegIndex = this.state.masterKegList.indexOf(
-      this.state.selectedKeg
-    );
-    const editedMasterKegList = this.state.masterKegList
-      .slice(0, editedKegIndex)
-      .concat(editedKeg)
-      .concat(this.state.masterKegList.slice(editedKegIndex + 1));
-    this.setState({
-      masterKegList: editedMasterKegList,
-      editing: false,
-      selectedKeg: null,
-    });
+    // const editedKegIndex = this.state.masterKegList.indexOf(
+    //   this.state.selectedKeg
+    // );
+    // const editedMasterKegList = this.state.masterKegList
+    //   .slice(0, editedKegIndex)
+    //   .concat(editedKeg)
+    //   .concat(this.state.masterKegList.slice(editedKegIndex + 1));
+    // this.setState({
+    //   masterKegList: editedMasterKegList,
+    //   editing: false,
+    //   selectedKeg: null,
+    // });
+    this.props.dispatch(a.addKeg(editedKeg));
+    this.setState({ editing: false, selectedKeg: null });
   };
   handleLeaveEditFormClick = () => {
     this.setState({ editing: false });
   };
 
   /* Delete a keg */
+  // **switched to redux state**
   handleDeleteClick = (id) => {
-    const newMasterKegList = this.state.masterKegList.filter(
-      (keg) => keg.id !== id
-    );
-    this.setState({
-      masterKegList: newMasterKegList,
-      selectedKeg: null,
-    });
+    // const newMasterKegList = this.state.masterKegList.filter(
+    //   (keg) => keg.id !== id
+    // );
+    // this.setState({
+    //   masterKegList: newMasterKegList,
+    //   selectedKeg: null,
+    // });
+
+    this.props.dispatch(a.deleteKeg(id));
   };
 
   /* Determine which components should be displayed on render */
@@ -155,5 +164,7 @@ class KegControl extends React.Component {
     );
   }
 }
+
+KegControl = connect()(KegControl);
 
 export default KegControl;
