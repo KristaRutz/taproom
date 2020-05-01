@@ -1,5 +1,4 @@
 import * as c from "../../actions/ActionTypes";
-//import * as a from "../actions"
 import addKegFormOnReducer from "../../reducers/add-keg-form-on-reducer";
 
 describe("addKegFormReducer", () => {

@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PintGraphic from "./PintGraphic";
 
 const ListTileStyle = {
   paddingTop: 30,
