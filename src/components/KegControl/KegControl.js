@@ -51,17 +51,23 @@ class KegControl extends React.Component {
   };
   // REFACTOR THIS for redux state!!
   handlePurchaseClick = (keg) => {
-    keg.pintsRemaining--; // consider using Object.assign()
-    const editedKegIndex = this.state.masterKegList.indexOf(
-      this.state.selectedKeg
-    );
-    const editedMasterKegList = this.state.masterKegList
-      .slice(0, editedKegIndex)
-      .concat(keg)
-      .concat(this.state.masterKegList.slice(editedKegIndex + 1));
-    this.setState({
-      masterKegList: editedMasterKegList,
+    // keg.pintsRemaining--; // consider using Object.assign()
+    // const editedKegIndex = this.state.masterKegList.indexOf(
+    //   this.state.selectedKeg
+    // );
+    // const editedMasterKegList = this.state.masterKegList
+    //   .slice(0, editedKegIndex)
+    //   .concat(keg)
+    //   .concat(this.state.masterKegList.slice(editedKegIndex + 1));
+    // this.setState({
+    //   masterKegList: editedMasterKegList,
+    // });
+    const kegToPurchase = Object.assign({}, this.props.masterKegList[keg.id], {
+      pintsRemaining: keg.pintsRemaining - 1,
     });
+    this.props.dispatch(a.addKeg(kegToPurchase));
+    console.log(this.props.masterKegList);
+    this.setState({ selectedKeg: this.props.masterKegList[keg.id] });
   };
   // **switched to redux state**
   handleEditingKeg = (editedKeg) => {
@@ -96,6 +102,7 @@ class KegControl extends React.Component {
     // });
 
     this.props.dispatch(a.deleteKeg(id));
+    this.setState({ selectedKeg: null });
   };
 
   /* Determine which components should be displayed on render */
