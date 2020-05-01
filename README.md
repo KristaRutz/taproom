@@ -1,6 +1,21 @@
-## Component diagram
+<div align=center>
+
+# Taproom
+
+#### JavaScript (React/Redux) Independent Project, _05.01.2020_
+
+#### By **Krista Rutz**
+
+[About](#About) | [Specs](#Specs) | [Installation](#Installation-Instructions) | [Bugs](#Known-Bugs) | [Technologies](#Technologies-Used) | [Contact](#Support-and-Contact-Details)
+
+![MIT license](https://img.shields.io/github/license/KristaRutz/taproom?color=yellow&style=for-the-badge) ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/KristaRutz/taproom/master?color=yellow&style=for-the-badge) ![GitHub language count](https://img.shields.io/github/languages/count/KristaRutz/taproom?color=yellow&style=for-the-badge) ![Languages](https://img.shields.io/github/languages/top/KristaRutz/taproom?color=yellow&style=for-the-badge) ![Languages](https://img.shields.io/netlify/88d2f14d-1f3f-47ed-ab8a-ed5f2e8b1f57?color=yellow&style=for-the-badge)
+
+</div>
+
+## Component diagrams
 
 ![Component Tree](IMG_1561.PNG)
+![Component Tree with Redux]()
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
