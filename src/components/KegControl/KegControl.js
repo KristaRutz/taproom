@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import KegDetail from "./KegDetail";
 import KegList from "./KegList";
 import NewKegForm from "./NewKegForm";
@@ -34,10 +35,9 @@ class KegControl extends React.Component {
   };
 
   /* View individual keg detail */
+  // Updated for mKL to be Obj in Redux
   handleKegDetailClick = (id) => {
-    const selectedKeg = this.state.masterKegList.filter(
-      (keg) => keg.id === id
-    )[0];
+    const selectedKeg = this.props.masterKegList[id];
     console.log(selectedKeg);
     this.setState({ selectedKeg: selectedKeg });
   };
@@ -49,6 +49,7 @@ class KegControl extends React.Component {
   handleEditClick = (id) => {
     this.setState({ editing: true });
   };
+  // REFACTOR THIS for redux state!!
   handlePurchaseClick = (keg) => {
     keg.pintsRemaining--; // consider using Object.assign()
     const editedKegIndex = this.state.masterKegList.indexOf(
@@ -156,7 +157,7 @@ class KegControl extends React.Component {
         </h1>
 
         <KegList
-          kegList={this.state.masterKegList}
+          kegList={this.props.masterKegList}
           onKegDetailClick={this.handleKegDetailClick}
         />
         <hr />
@@ -165,6 +166,16 @@ class KegControl extends React.Component {
   }
 }
 
-KegControl = connect()(KegControl);
+KegControl.propTypes = {
+  masterKegList: PropTypes.object,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    masterKegList: state,
+  };
+};
+
+KegControl = connect(mapStateToProps)(KegControl);
 
 export default KegControl;

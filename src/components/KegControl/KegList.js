@@ -6,15 +6,21 @@ function KegList(props) {
   return (
     <div className="container-fluid">
       {/* <h1 className="display-4">on tap</h1> */}
-      {props.kegList.map((keg) => (
-        <KegListTile keg={keg} onClick={props.onKegDetailClick} key={keg.id} />
-      ))}
+      {Object.values(props.kegList).map((keg) => {
+        return (
+          <KegListTile
+            keg={keg}
+            onClick={props.onKegDetailClick}
+            key={keg.id}
+          />
+        );
+      })}
     </div>
   );
 }
 
 KegList.propTypes = {
-  kegList: PropTypes.array,
+  kegList: PropTypes.object,
   onKegDetailClick: PropTypes.func,
 };
 
