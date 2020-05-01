@@ -8,24 +8,22 @@ import EditKegForm from "./EditKegForm";
 import * as a from "../../actions";
 
 class KegControl extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      editing: false,
-      addingNew: false,
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {};
+  // }
 
   /* Adding a new keg */
   handleAddClick = () => {
-    this.setState({ addingNew: true });
+    this.props.dispatch(a.setAddKegFormOn(true));
   };
   handleAddingKeg = (newKeg) => {
-    this.props.dispatch(a.addKeg(newKeg));
-    this.setState({ addingNew: false });
+    const { dispatch } = this.props;
+    dispatch(a.addKeg(newKeg));
+    dispatch(a.setAddKegFormOn(false));
   };
   handleLeaveNewFormClick = () => {
-    this.setState({ addingNew: false });
+    this.props.dispatch(a.setAddKegFormOn(false));
   };
 
   /* View individual keg detail */
@@ -39,7 +37,7 @@ class KegControl extends React.Component {
 
   /* Edit a keg */
   handleEditClick = (id) => {
-    this.setState({ editing: true });
+    this.props.dispatch(a.setEditKegFormOn(true));
   };
   handlePurchaseClick = (keg) => {
     const kegToPurchase = Object.assign({}, this.props.masterKegList[keg.id], {
@@ -53,10 +51,10 @@ class KegControl extends React.Component {
     const { dispatch } = this.props;
     dispatch(a.editKeg(editedKeg));
     dispatch(a.deselectKeg());
-    this.setState({ editing: false });
+    dispatch(a.setEditKegFormOn(false));
   };
   handleLeaveEditFormClick = () => {
-    this.setState({ editing: false });
+    this.props.dispatch(a.setEditKegFormOn(false));
   };
 
   /* Delete a keg */
@@ -68,7 +66,7 @@ class KegControl extends React.Component {
 
   /* Determine which components should be displayed on render */
   setVisibleScreen = () => {
-    if (this.state.editing === true) {
+    if (this.props.editKegFormOn === true) {
       return {
         component: (
           <EditKegForm
@@ -90,7 +88,7 @@ class KegControl extends React.Component {
           />
         ),
       };
-    } else if (this.state.addingNew === true) {
+    } else if (this.props.addKegFormOn === true) {
       return {
         component: (
           <NewKegForm
@@ -108,7 +106,6 @@ class KegControl extends React.Component {
 
   render() {
     let visibleScreen = this.setVisibleScreen();
-    console.log(this.state.masterKegList);
     return (
       <React.Fragment>
         {visibleScreen.component}
@@ -119,7 +116,6 @@ class KegControl extends React.Component {
             +
           </span>
         </h1>
-
         <KegList
           kegList={this.props.masterKegList}
           onKegDetailClick={this.handleKegDetailClick}
@@ -132,12 +128,17 @@ class KegControl extends React.Component {
 
 KegControl.propTypes = {
   masterKegList: PropTypes.object,
+  selectedKeg: PropTypes.object,
+  addKegFormOn: PropTypes.bool,
+  editKegFormOn: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => {
   return {
     masterKegList: state.masterKegList,
     selectedKeg: state.selectedKeg,
+    addKegFormOn: state.addKegFormOn,
+    editKegFormOn: state.editKegFormOn,
   };
 };
 
