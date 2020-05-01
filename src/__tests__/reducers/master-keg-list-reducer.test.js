@@ -2,22 +2,6 @@ import masterKegListReducer from "../../reducers/master-keg-list-reducer";
 import * as c from "../../actions/ActionTypes";
 import { v4 } from "uuid";
 
-// const keg = {
-//   itemName: "Superfuzz",
-//   beerType: "Blood Orange Pale Ale",
-//   desc:
-//     "Is a mind-bending whirl of the aromas and flavors of blood orange and Northwest hops. Orange peel added to the whirlpool, and Blood Orange in the fermenter.",
-//   origin: "Seattle, WA, USA",
-//   brewer: "Elysian Brewing",
-//   price: 189,
-//   pintsRemaining: 124,
-//   abv: 6.4,
-//   ibu: 45,
-//   created: new Date(),
-//   lastUpdated: new Date(),
-//   id: v4(),
-// };
-
 describe("masterKegListReducer", () => {
   test("should return default state if the action type passed into the reducer is not recognized", () => {
     expect(masterKegListReducer({}, { type: null })).toEqual({});
@@ -45,6 +29,22 @@ describe("masterKegListReducer", () => {
         brewer: "Elysian Brewing",
         id: id,
       },
+    });
+  });
+
+  test("should correctly delete a single keg from a list of kegs by id", () => {
+    const id1 = v4();
+    const id2 = v4();
+    const list = {
+      [id1]: { test: "keg 1", id: id1 },
+      [id2]: { test: "keg 2", id: id2 },
+    };
+    const deleteKeg1Action = {
+      type: c.DELETE_KEG,
+      id: id1,
+    };
+    expect(masterKegListReducer(list, deleteKeg1Action)).toEqual({
+      [id2]: { test: "keg 2", id: id2 },
     });
   });
 });
