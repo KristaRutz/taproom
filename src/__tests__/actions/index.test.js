@@ -4,14 +4,15 @@ import { v4 } from "uuid";
 
 describe("taproom action types", () => {
   it("addKeg should create ADD_KEG action", () => {
-    const id = v4();
-    const testKeg = {
-      itemName: "Example",
-      id,
-    };
+    const testKeg = { itemName: "Example" };
     expect(actions.addKeg(testKeg)).toEqual({
       type: c.ADD_NEW_KEG,
       keg: testKeg,
     });
+  });
+
+  it("deleteKeg should create a DELETE_KEG action", () => {
+    const id = v4();
+    expect(actions.deleteKeg(id)).toEqual({ type: c.DELETE_KEG, id: id });
   });
 });
