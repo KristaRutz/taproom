@@ -23,17 +23,19 @@ describe("masterKegListReducer", () => {
     expect(masterKegListReducer({}, { type: null })).toEqual({});
   });
 
-  test("should successfully add a new ticket to the ticket list", () => {
+  test("should successfully add a new keg to the keg list", () => {
     const id = v4();
     expect(
       masterKegListReducer(
         {},
         {
           type: c.ADD_NEW_KEG,
-          itemName: "Superfuzz",
-          price: 189,
-          brewer: "Elysian Brewing",
-          id: id,
+          payload: {
+            itemName: "Superfuzz",
+            price: 189,
+            brewer: "Elysian Brewing",
+            id: id,
+          },
         }
       )
     ).toEqual({
